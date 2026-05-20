@@ -18,7 +18,7 @@ export default function Hero() {
             content: "";
             position: absolute;
             inset: 0;
-            background-image: url("/saudievent-nobg.png");
+            background-image: url("/saudi-nobg1.png");
             background-repeat: no-repeat;
            background-position: 95% center;
             background-size: 520px;
