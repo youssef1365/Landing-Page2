@@ -11,23 +11,23 @@ export const expoData = {
         title: "Structured meetings. Real market access.",
         subtitle: "Your business agenda is built before the event.",
         deliverables: [
-            "confirmed buyer meetings",
-            "targeted business opportunities",
-            "a structured expansion strategy"
+            "Confirmed buyer meetings",
+            "Targeted business opportunities",
+            "A structured expansion strategy"
         ],
 
         criteria: [
-            "product fit",
-            "market objectives",
-            "distribution potential",
-            "sourcing interest"
+            "Product fit",
+            "Market objectives",
+            "Distribution potential",
+            "Sourcing interest"
         ]
     },
 
     packages: [
             {
                 id: "access",
-                name: "Package 1 — Business Access",
+                name: "Business Access",
                 tagline: "Best for companies exploring the Saudi market.",
                 isPopular: false,
                 features: ["5–8 qualified meetings", "Targeted outreach", "Agenda scheduling", "Basic event access"]
@@ -35,7 +35,7 @@ export const expoData = {
 
             {
                 id: "presence",
-                name: "Package 2 — Business Presence",
+                name: "Business Presence",
                 tagline: "Best for brands looking for visibility and business development opportunities.",
                 isPopular: true,
                 features: ["Pavilion participation", "Shared premium setup", "8–10 qualified meetings", "Priority scheduling", "Enhanced event visibility"]
@@ -43,7 +43,7 @@ export const expoData = {
 
             {
                 id: "expansion",
-                name: "Package 3 — Business Expansion",
+                name: "Business Expansion",
                 tagline: "Best for companies ready to accelerate expansion in Saudi Arabia.",
                 isPopular: false,
                 features: ["Custom stand", "Client choice", "10+ qualified meetings", "Advanced targeting", "Dedicated on-site coordination"]
@@ -51,7 +51,7 @@ export const expoData = {
 
             {
                 id: "space-only",
-                name: "Package 4 — Exhibition Space Only",
+                name: "Exhibition Space Only",
                 tagline: "Best for companies operating independently with their own commercial strategy.",
                 isPopular: false,
                 features: ["Exhibition space only", "Independent participation", "No B2B meetings included"],
@@ -70,12 +70,12 @@ export const expoData = {
             "Sustainable household products", "Personal care products", "Clean beauty", "Eco-friendly innovations"
         ],
         steps: [
-            { title: "Step 1 — Submit Application", desc: "Quick application process." },
-            { title: "Step 2 — Qualification Call", desc: "We evaluate your products and objectives." },
-            { title: "Step 3 — Buyer Identification", desc: "We identify relevant Saudi buyers." },
-            { title: "Step 4 — Meeting Scheduling", desc: "Your agenda is finalized before the exhibition." },
-            { title: "Step 5 — Event Participation", desc: "Meet qualified buyers onsite." },
-            { title: "Step 6 — Strategic Follow-up", desc: "Transform meetings into long-term business opportunities." }
+            { title: "Submit Application", desc: "Quick application process." },
+            { title: "Qualification Call", desc: "We evaluate your products and objectives." },
+            { title: "Buyer Identification", desc: "We identify relevant Saudi buyers." },
+            { title: "Meeting Scheduling", desc: "Your agenda is finalized before the exhibition." },
+            { title: "Event Participation", desc: "Meet qualified buyers onsite." },
+            { title: "Strategic Follow-up", desc: "Transform meetings into long-term business opportunities." }
         ],
         trackRecord: [
             { metric: "30+ ", label: "Countries Represented" },

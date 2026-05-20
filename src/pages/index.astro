@@ -32,45 +32,45 @@ import { expoData } from '../data/expoData';
       </div>
     </header>
 
-    <section id="hero">
+    <div id="hero">
       <Hero client:idle />
-    </section>
+    </div>
 
-    <section id="event">
+    <div id="event">
       <EventSection event={expoData.event} client:idle />
-    </section>
+    </div>
 
-    <section id="program">
+    <div id="program">
       <ProgramSection program={expoData.program} client:idle />
-    </section>
+    </div>
 
-    <section id="packages">
+    <div id="packages">
       <PackagesSection packages={expoData.packages} client:idle />
-    </section>
+    </div>
 
-    <section id="markets">
+    <div id="markets">
       <MarketsAndSectors
         buyerProfiles={expoData.buyerProfiles}
         sectors={expoData.sectors}
         client:idle
       />
-    </section>
+    </div>
 
-    <section id="steps">
+    <div id="steps">
       <StepsSection steps={expoData.steps} client:idle />
-    </section>
+    </div>
 
-    <section id="track-record">
+    <div id="track-record">
       <TrackRecord trackRecord={expoData.trackRecord} client:idle />
-    </section>
+    </div>
 
-    <section id="apply">
+    <div id="apply">
       <ApplicationForm packages={expoData.packages} client:load />
-    </section>
+    </div>
 
-    <section id="final-cta">
+    <div id="final-cta">
       <FinalCTA event={expoData.event} client:idle />
-    </section>
+    </div>
 
     <footer id="footer">
       <Footer client:idle />

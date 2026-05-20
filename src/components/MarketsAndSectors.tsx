@@ -6,6 +6,15 @@ export default function MarketsAndSectors({ buyerProfiles, sectors }) {
 
       <style>
         {`
+          .markets-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 3rem;
+
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+          }
+
           .markets-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -14,15 +23,14 @@ export default function MarketsAndSectors({ buyerProfiles, sectors }) {
 
           @media (min-width: 768px) {
             .markets-grid {
-              grid-template-columns: repeat(2, 1fr);
-              align-items: start;
+              grid-template-columns: 1fr 1fr;
             }
           }
 
           .section-block h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.75rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
             color: var(--text-main);
           }
 
@@ -33,96 +41,84 @@ export default function MarketsAndSectors({ buyerProfiles, sectors }) {
             line-height: 1.6;
           }
 
-          /* BUYERS */
-          .buyer-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-          }
-
-          .buyer-item {
-            padding: 1rem 1.25rem;
-
-            background: var(--bg-white);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-
-            transition: all 0.2s ease;
-          }
-
-          .buyer-item:hover {
-            transform: translateX(4px);
-            border-color: var(--color-primary);
-            color: var(--text-main);
-          }
-
-          /* SECTORS */
-          .sectors-flex {
+          /* TAG SYSTEM (shared style) */
+          .tag-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
           }
 
-          .sector-tag {
-            padding: 0.55rem 0.9rem;
+          .tag {
+            padding: 0.6rem 0.9rem;
 
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
 
             border-radius: 999px;
 
-            background: var(--bg-white);
             border: 1px solid var(--border-color);
+            background: var(--bg-main);
 
             color: var(--text-secondary);
 
             transition: all 0.2s ease;
+            cursor: default;
           }
 
-          .sector-tag:hover {
-            background: var(--bg-main);
+          .tag:hover {
+            transform: translateY(-2px);
             border-color: var(--color-primary);
             color: var(--text-main);
-            transform: translateY(-2px);
+            background: #f8fafc;
+          }
+
+          /* Optional subtle differentiation */
+          .tag.buyer {
+            background: linear-gradient(to right, #f0fdf4, #ffffff);
+          }
+
+          .tag.sector {
+            background: linear-gradient(to right, #eff6ff, #ffffff);
           }
         `}
       </style>
 
-      <div className="markets-grid">
+      <div className="markets-card">
 
-        {/* BUYERS */}
-        <div className="section-block">
-          <h2>Who You Will Meet</h2>
-          <p className="section-subtitle">
-            Qualified buyers actively sourcing products
-          </p>
+        <div className="markets-grid">
 
-          <div className="buyer-grid">
-            {buyerProfiles.map((profile, index) => (
-              <div key={index} className="buyer-item">
-                {profile}
-              </div>
-            ))}
+          {/* BUYERS */}
+          <div className="section-block">
+            <h2>Qualified Buyers</h2>
+            <p className="section-subtitle">
+              Decision-makers actively sourcing products in Saudi Arabia.
+            </p>
+
+            <div className="tag-grid">
+              {buyerProfiles.map((profile, index) => (
+                <span key={index} className="tag buyer">
+                  {profile}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* SECTORS */}
-        <div className="section-block">
-          <h2>Sectors Covered</h2>
-          <p className="section-subtitle">
-            Dynamic and high-demand industry segments
-          </p>
+          {/* SECTORS */}
+          <div className="section-block">
+            <h2>Sectors Covered</h2>
+            <p className="section-subtitle">
+              High-growth categories with strong demand.
+            </p>
 
-          <div className="sectors-flex">
-            {sectors.map((sector, index) => (
-              <span key={index} className="sector-tag">
-                {sector}
-              </span>
-            ))}
+            <div className="tag-grid">
+              {sectors.map((sector, index) => (
+                <span key={index} className="tag sector">
+                  {sector}
+                </span>
+              ))}
+            </div>
           </div>
+
         </div>
 
       </div>

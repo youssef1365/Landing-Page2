@@ -5,117 +5,101 @@ export default function Hero() {
   return (
     <>
       <style>
-      {`
-        .hero {
-          padding: 8rem 0 6rem;
-          background: linear-gradient(to bottom, var(--bg-main), #eef2ff);
-          height: 750px;
-        }
-
-        .hero-content {
-          max-width: 920px;
-          margin: 0 auto;
-          text-align: center;
-          padding: 0 1.5rem;
-        }
-
-        .hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-
-          margin-bottom: 1.5rem;
-          padding: 0.6rem 1rem;
-
-          border-radius: 999px;
-          background: var(--bg-white);
-          border: 1px solid var(--border-color);
-
-          color: var(--text-secondary);
-          font-weight: 600;
-          font-size: 0.85rem;
-          letter-spacing: 0.02em;
-
-          box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-        }
-
-        .hero-title {
-          margin-bottom: 1.5rem;
-          font-weight: 800;
-          letter-spacing: -0.03em;
-          line-height: 1.1;
-        }
-
-        .hero-text {
-          max-width: 720px;
-          margin: 0 auto 1.25rem;
-          font-size: 1.3rem;
-          line-height: 1.7;
-          color: var(--text-main);
-          opacity: 0.85;
-        }
-
-        .hero-subtext {
-          max-width: 680px;
-          margin: 0 auto 2.5rem;
-          font-size: 1.1rem;
-          line-height: 1.6;
-          color: var(--text-secondary);
-          opacity: 0.9;
-        }
-
-        /* BUTTON spacing fix */
-        .hero a.btn {
-          margin-top: 0.5rem;
-        }
-
-        /* META SECTION */
-        .hero-meta {
-          margin-top: 4rem;
-          display: grid;
-          gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-          .hero-meta {
-            grid-template-columns: repeat(2, 1fr);
+        {`
+          .hero {
+            position: relative;
+            padding: 8rem 0 6rem;
+            background: linear-gradient(to bottom, var(--bg-main), #eef2ff);
+            min-height: 750px;
+            overflow: hidden;
           }
-        }
 
-        /* CARDS */
-        .hero-card {
-          padding: 1.75rem;
-          text-align: left;
+          .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("/saudievent-nobg.png");
+            background-repeat: no-repeat;
+           background-position: 95% center;
+            background-size: 520px;
+            opacity: 0.82;
+            pointer-events: none;
+          }
 
-          background: var(--bg-white);
-          border: 1px solid var(--border-color);
-          border-radius: 1.25rem;
+          .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+              circle at right center,
+              transparent 35%,
+              rgba(255,255,255,0.35)
+            );
+            pointer-events: none;
+          }
 
-          box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+          .hero-content {
+            position: relative;
+            z-index: 2;
 
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+            max-width: 920px;
+            margin-left: 6%;
+            margin-right: auto;
 
-        .hero-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-        }
+            text-align: left;
+            padding: 0 1.5rem;
+          }
 
-        .hero-card span {
-          display: block;
-          margin-bottom: 0.5rem;
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: var(--text-secondary);
-        }
+          @media (max-width: 768px) {
+            .hero-content {
+              margin: 0 auto;
+              text-align: center;
+            }
 
-        .hero-card strong {
-          font-size: 1.05rem;
-          line-height: 1.5;
-          color: var(--text-main);
-        }
-      `}
+            .hero::before {
+              background-position: center top;
+              background-size: 320px;
+            }
+          }
+
+          .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+          }
+
+          .hero-title {
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+          }
+
+          .hero-text {
+            max-width: 720px;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            opacity: 0.9;
+          }
+
+          .hero-subtext {
+            max-width: 680px;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+          }
+          .btn btn-primary{
+            color : var(--green);
+        `}
       </style>
 
       <section className="hero">
@@ -143,8 +127,6 @@ export default function Hero() {
           <a href="#apply" className="btn btn-primary">
             Apply Now
           </a>
-
-
         </div>
       </section>
     </>

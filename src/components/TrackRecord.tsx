@@ -110,7 +110,7 @@ export default function TrackRecord({ trackRecord }) {
           .stat-metric {
             font-size: 1.6rem;
             font-weight: 900;
-            color: var(--color-primary);
+            color: var(--green);
             line-height: 1.2;
           }
 
@@ -149,7 +149,6 @@ export default function TrackRecord({ trackRecord }) {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="track-card">
 
           <h3 className="track-title">WINK Track Record</h3>

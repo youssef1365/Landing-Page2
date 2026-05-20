@@ -16,19 +16,18 @@ export default function ApplicationForm({ packages }) {
             margin: 0 auto;
             padding: 3rem;
 
-            background: var(--bg-white);
-            border: 1px solid var(--border-color);
             border-radius: 1.5rem;
+            border: 1px solid var(--border-color);
 
+            background: var(--bg-white);
             box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
           }
 
           .form-title {
             text-align: center;
             font-size: 2rem;
-            font-weight: 800;
+            font-weight: 900;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
           }
 
           .form-subtitle {
@@ -40,12 +39,16 @@ export default function ApplicationForm({ packages }) {
           form {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1.4rem;
           }
 
           .grid-2 {
             display: grid;
-            grid-template-columns: 1fr;
+            gap: 1.25rem;
+          }
+
+          .grid-3 {
+            display: grid;
             gap: 1.25rem;
           }
 
@@ -53,15 +56,7 @@ export default function ApplicationForm({ packages }) {
             .grid-2 {
               grid-template-columns: repeat(2, 1fr);
             }
-          }
 
-          .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-          }
-
-          @media (min-width: 768px) {
             .grid-3 {
               grid-template-columns: repeat(3, 1fr);
             }
@@ -73,57 +68,60 @@ export default function ApplicationForm({ packages }) {
           }
 
           label {
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-size: 0.75rem;
+            font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--text-secondary);
             margin-bottom: 0.5rem;
           }
 
-          input,
-          select,
-          textarea {
-            padding: 0.85rem 1rem;
-            border-radius: 0.75rem;
+          .required {
+            color: var(--color-primary-dark);
+            margin-left: 4px;
+          }
+
+          input, select, textarea {
+            padding: 0.9rem 1rem;
+            border-radius: 0.8rem;
 
             border: 1px solid var(--border-color);
             background: var(--bg-white);
 
             font-size: 0.95rem;
 
-            transition: all 0.2s ease;
             outline: none;
+            transition: all 0.2s ease;
           }
 
           input:focus,
           select:focus,
           textarea:focus {
             border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            box-shadow: 0 0 0 3px rgba(62, 155, 86, 0.15);
           }
 
           textarea {
-            min-height: 110px;
+            min-height: 120px;
             resize: vertical;
           }
 
-          /* PACKAGE RADIO */
-          .radio-stack {
+          /* PACKAGES (clean radio list) */
+          .package-list {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
           }
 
-          .radio-card {
+          .package-option {
             display: flex;
             align-items: center;
             gap: 0.75rem;
 
-            padding: 1rem;
+            padding: 0.9rem 1rem;
 
-            border-radius: 1rem;
             border: 1px solid var(--border-color);
+            border-radius: 0.9rem;
 
             background: var(--bg-white);
 
@@ -131,39 +129,41 @@ export default function ApplicationForm({ packages }) {
             transition: all 0.2s ease;
           }
 
-          .radio-card:hover {
+          .package-option:hover {
             border-color: var(--color-primary);
-            transform: translateY(-2px);
+            background: rgba(62, 155, 86, 0.05);
           }
 
-          .divider {
+          .package-option input {
+            accent-color: var(--color-primary);
+          }
+
+          hr {
+            border: none;
             height: 1px;
             background: var(--border-color);
-            border: none;
             margin: 1rem 0;
           }
 
           .submit-btn {
-            width: 100%;
             padding: 1rem;
-
             border: none;
             border-radius: 1rem;
 
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            color: white;
-
-            font-weight: 800;
+            font-weight: 900;
             font-size: 1rem;
+
+            color: white;
+            background: var(--color-primary);
 
             cursor: pointer;
 
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
           }
 
           .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.25);
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
           }
         `}
       </style>
@@ -172,7 +172,7 @@ export default function ApplicationForm({ packages }) {
 
         <h2 className="form-title">Apply to Join</h2>
         <p className="form-subtitle">
-          Submit your brand details to begin our review process.
+          Submit your brand details to begin the selection process.
         </p>
 
         <form onSubmit={(e) => e.preventDefault()}>
@@ -180,7 +180,7 @@ export default function ApplicationForm({ packages }) {
           {/* COMPANY */}
           <div className="grid-2">
             <div className="form-group">
-              <label>Company Name</label>
+              <label>Company Name <span className="required">*</span></label>
               <input type="text" required />
             </div>
 
@@ -190,25 +190,22 @@ export default function ApplicationForm({ packages }) {
             </div>
           </div>
 
-          {/* INDUSTRY */}
           <div className="form-group">
-            <label>Industry</label>
+            <label>Industry <span className="required">*</span></label>
             <select required>
               <option value="">Select Industry...</option>
-              <option value="food-beverage">Food & Beverage</option>
-              <option value="cosmetics-beauty">Cosmetics & Clean Beauty</option>
-              <option value="wellness-health">Wellness & Health Supplements</option>
-              <option value="other">Other Eco-Friendly Innovations</option>
+              <option>Products / Services</option>
+              <option>Cosmetics & Clean Beauty</option>
+              <option>Wellness & Health Supplements</option>
+              <option>Other Eco-Friendly Innovations</option>
             </select>
           </div>
 
-          {/* DESCRIPTION */}
           <div className="form-group">
-            <label>Products / Services</label>
+            <label>Products / Services <span className="required">*</span></label>
             <textarea required />
           </div>
 
-          {/* TARGET */}
           <div className="grid-2">
             <div className="form-group">
               <label>Target Markets</label>
@@ -223,39 +220,58 @@ export default function ApplicationForm({ packages }) {
 
           {/* PACKAGES */}
           <div className="form-group">
-            <label>Select Your Package</label>
+            <label>Select Your Package <span className="required">*</span></label>
 
-            <div className="radio-stack">
+            <div className="package-list">
               {packages.map((pkg) => (
-                <label key={pkg.id} className="radio-card">
-                  <input type="radio" name="package-choice" value={pkg.id} required />
-                  <span>{pkg.name}</span>
+                <label key={pkg.id} className="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value={pkg.id}
+                    required
+                  />
+                  {pkg.name}
                 </label>
               ))}
             </div>
           </div>
 
-          <hr className="divider" />
+          <hr />
 
-          {/* CONTACT */}
-          <div className="grid-3">
-            <div className="form-group">
-              <label>Contact Person</label>
-              <input type="text" required />
-            </div>
+          <div className="form-group">
 
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" required />
-            </div>
+            <label>
+              Contact Person <span className="required">*</span>
+            </label>
 
-            <div className="form-group">
-              <label>Phone</label>
-              <input type="tel" required />
+            <div className="grid-3">
+
+              <div className="form-group">
+                <label>
+                  Full Name <span className="required">*</span>
+                </label>
+                <input type="text" required />
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Email <span className="required">*</span>
+                </label>
+                <input type="email" required />
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Phone <span className="required">*</span>
+                </label>
+                <input type="tel" required />
+              </div>
+
             </div>
           </div>
 
-          <button type="submit" className="submit-btn">
+          <button className="submit-btn" type="submit">
             Submit Application
           </button>
 

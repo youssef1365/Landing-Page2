@@ -27,23 +27,20 @@ export default function PackageCard({ pkg }) {
           }
 
           .package-card.popular {
-            border: 1px solid var(--color-primary);
-            background: linear-gradient(to bottom, #eef2ff, #ffffff);
+            border: 1px solid var(--green);
+            background: linear-gradient(to bottom, #3E9B56, #ffffff);
           }
 
           .badge {
             display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-
-            padding: 0.35rem 0.7rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 999px;
-
-            background: var(--color-primary);
+            background: var(--green-dark);
             color: white;
-
             margin-bottom: 1rem;
           }
 
