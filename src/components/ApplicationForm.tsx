@@ -3,26 +3,197 @@ import React from 'react';
 export default function ApplicationForm({ packages }) {
   return (
     <section id="apply" className="form-section">
-      <div className="form-wrapper">
-        {/* Main Section Title */}
-        <h2 className="text-center">Apply to Join</h2>
-        <p className="text-center section-subtitle">Submit your brand details to begin our review process.</p>
 
-        <form style={styles.appForm} onSubmit={(e) => e.preventDefault()}>
-          <div style={styles.formRow2}>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Company Name*</label>
-              <input type="text" required style={styles.input} />
+      <style>
+        {`
+          .form-section {
+            padding: 6rem 0;
+            background: var(--bg-white);
+          }
+
+          .form-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem;
+
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+          }
+
+          .form-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+          }
+
+          .form-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+          }
+
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+          }
+
+          .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+          }
+
+          @media (min-width: 768px) {
+            .grid-2 {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+
+          .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+          }
+
+          @media (min-width: 768px) {
+            .grid-3 {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+          }
+
+          label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+          }
+
+          input,
+          select,
+          textarea {
+            padding: 0.85rem 1rem;
+            border-radius: 0.75rem;
+
+            border: 1px solid var(--border-color);
+            background: var(--bg-white);
+
+            font-size: 0.95rem;
+
+            transition: all 0.2s ease;
+            outline: none;
+          }
+
+          input:focus,
+          select:focus,
+          textarea:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+          }
+
+          textarea {
+            min-height: 110px;
+            resize: vertical;
+          }
+
+          /* PACKAGE RADIO */
+          .radio-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+          }
+
+          .radio-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+
+            padding: 1rem;
+
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+
+            background: var(--bg-white);
+
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+
+          .radio-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+          }
+
+          .divider {
+            height: 1px;
+            background: var(--border-color);
+            border: none;
+            margin: 1rem 0;
+          }
+
+          .submit-btn {
+            width: 100%;
+            padding: 1rem;
+
+            border: none;
+            border-radius: 1rem;
+
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+
+            font-weight: 800;
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+          }
+
+          .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.25);
+          }
+        `}
+      </style>
+
+      <div className="form-wrapper">
+
+        <h2 className="form-title">Apply to Join</h2>
+        <p className="form-subtitle">
+          Submit your brand details to begin our review process.
+        </p>
+
+        <form onSubmit={(e) => e.preventDefault()}>
+
+          {/* COMPANY */}
+          <div className="grid-2">
+            <div className="form-group">
+              <label>Company Name</label>
+              <input type="text" required />
             </div>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Website</label>
-              <input type="url" style={styles.input} />
+
+            <div className="form-group">
+              <label>Website</label>
+              <input type="url" />
             </div>
           </div>
 
-          <div style={styles.formGroup}>
-            <label style={styles.label}>Industry*</label>
-            <select required style={styles.input}>
+          {/* INDUSTRY */}
+          <div className="form-group">
+            <label>Industry</label>
+            <select required>
               <option value="">Select Industry...</option>
               <option value="food-beverage">Food & Beverage</option>
               <option value="cosmetics-beauty">Cosmetics & Clean Beauty</option>
@@ -31,69 +202,65 @@ export default function ApplicationForm({ packages }) {
             </select>
           </div>
 
-          <div style={styles.formGroup}>
-            <label style={styles.label}>Products / Services*</label>
-            <textarea required rows="3" style={styles.textarea}></textarea>
+          {/* DESCRIPTION */}
+          <div className="form-group">
+            <label>Products / Services</label>
+            <textarea required />
           </div>
 
-          <div style={styles.formRow2}>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Target Markets</label>
-              <input type="text" style={styles.input} />
+          {/* TARGET */}
+          <div className="grid-2">
+            <div className="form-group">
+              <label>Target Markets</label>
+              <input type="text" />
             </div>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Ideal Buyers Wishlist</label>
-              <input type="text" style={styles.input} />
+
+            <div className="form-group">
+              <label>Ideal Buyers Wishlist</label>
+              <input type="text" />
             </div>
           </div>
 
-          <div style={styles.formGroup}>
-            <label style={styles.label}>Select Your Package*</label>
-            <div style={styles.radioStack}>
+          {/* PACKAGES */}
+          <div className="form-group">
+            <label>Select Your Package</label>
+
+            <div className="radio-stack">
               {packages.map((pkg) => (
-                <label key={pkg.id} style={styles.radioLabelCard}>
-                  <input type="radio" name="package-choice" value={pkg.id} required style={styles.radioInput} />
+                <label key={pkg.id} className="radio-card">
+                  <input type="radio" name="package-choice" value={pkg.id} required />
                   <span>{pkg.name}</span>
                 </label>
               ))}
             </div>
           </div>
 
-          <hr style={styles.formDivider} />
+          <hr className="divider" />
 
-          <div style={styles.formRow3}>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Contact Person*</label>
-              <input type="text" required style={styles.input} />
+          {/* CONTACT */}
+          <div className="grid-3">
+            <div className="form-group">
+              <label>Contact Person</label>
+              <input type="text" required />
             </div>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Email*</label>
-              <input type="email" required style={styles.input} />
+
+            <div className="form-group">
+              <label>Email</label>
+              <input type="email" required />
             </div>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Phone*</label>
-              <input type="tel" required style={styles.input} />
+
+            <div className="form-group">
+              <label>Phone</label>
+              <input type="tel" required />
             </div>
           </div>
 
-          <button type="submit" style={styles.btnSubmit}>Submit Application</button>
+          <button type="submit" className="submit-btn">
+            Submit Application
+          </button>
+
         </form>
       </div>
     </section>
   );
 }
-
-const styles = {
-  appForm: { display: 'flex', flexDirection: 'column', gap: '1.25rem', marginTop: '2rem' },
-  formGroup: { display: 'flex', flexDirection: 'column' },
-  label: { fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: '#475569', marginBottom: '0.5rem', letterSpacing: '0.05em' },
-  input: { width: '100%', padding: '0.75rem 1rem', backgroundColor: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '0.75rem', fontSize: '0.95rem', outline: 'none' },
-  textarea: { width: '100%', padding: '0.75rem 1rem', backgroundColor: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '0.75rem', fontSize: '0.95rem', outline: 'none', fontFamily: 'inherit' },
-  formRow2: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' },
-  formRow3: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' },
-  radioStack: { display: 'flex', flexDirection: 'column', gap: '0.5rem' },
-  radioLabelCard: { display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem', backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '0.75rem', cursor: 'pointer', fontSize: '0.875rem' },
-  radioInput: { width: '1rem', height: '1rem', cursor: 'pointer' },
-  formDivider: { border: 0, height: '1px', backgroundColor: '#e2e8f0', margin: '1rem 0' },
-  btnSubmit: { width: '100%', backgroundColor: '#0f172a', color: '#ffffff', padding: '1rem', fontSize: '1rem', fontWeight: 700, border: 'none', borderRadius: '0.75rem', cursor: 'pointer' }
-};
