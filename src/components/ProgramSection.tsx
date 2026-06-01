@@ -66,11 +66,9 @@ export default function ProgramSection({ program }) {
             display: flex;
             align-items: center;
             gap: 0.6rem;
-
-            font-size: 1.2rem;
+            font-size: 1.7rem;
             font-weight: 800;
             color: var(--text-main);
-
             margin-bottom: 1.75rem;
           }
 
@@ -122,7 +120,6 @@ export default function ProgramSection({ program }) {
 
           <div className="program-card">
             <h3>
-              <span className="icon">🎯</span>
               You arrive with
             </h3>
 
@@ -135,7 +132,6 @@ export default function ProgramSection({ program }) {
 
           <div className="program-card">
             <h3>
-              <span className="icon">🔍</span>
               Buyer selection criteria
             </h3>
 

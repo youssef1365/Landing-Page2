@@ -3,137 +3,164 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="main-footer">
+      <style>{`
+        .main-footer {
+          padding: 4rem 0;
+          background: var(--bg-white);
+          border-top: 1px solid var(--border-color);
+        }
 
-      <style>
-        {`
-          .main-footer {
-            padding: 4rem 0;
-            background: var(--bg-white);
-            border-top: 1px solid var(--border-color);
-          }
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
 
+        @media (min-width: 900px) {
           .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: start;
+            grid-template-columns: repeat(3, 1fr);
           }
+        }
 
-          @media (min-width: 900px) {
-            .footer-grid {
-              grid-template-columns: 1fr 1fr 1fr;
-            }
-          }
+        .footer-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 1.2rem;
+        }
 
-          .footer-col {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-          }
+        .footer-logo-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 70px;
+        }
 
-          /* LOGOS */
-          .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-          }
+        .footer-logo-box img {
+          max-height: 70px;
+          width: auto;
+          object-fit: contain;
+          opacity: 0.9;
+          transition: 0.2s ease;
+        }
 
-          .footer-logo img {
-            height: 70px;
-            width: auto;
-            object-fit: contain;
-            opacity: 0.9;
-            transition: 0.2s ease;
-          }
+        .footer-logo-box img:hover {
+          opacity: 1;
+          transform: scale(1.05);
+        }
 
-          .footer-logo img:hover {
-            opacity: 1;
-            transform: scale(1.05);
-          }
+        .footer-divider {
+          width: 40px;
+          height: 2px;
+          background: var(--wink-accent);
+          border-radius: 999px;
+          opacity: 0.4;
+        }
 
-          /* LINKS */
-          .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-          }
+        .footer-label {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          font-weight: 800;
+          color: var(--text-secondary);
+        }
 
-          .footer-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            transition: 0.2s ease;
-          }
+        .footer-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
 
-          .footer-links a:hover {
-            color: var(--color-primary);
-          }
+        .footer-links a {
+          text-decoration: none;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+          transition: 0.2s ease;
+        }
 
-          /* CONTACT */
-          .footer-contact {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-          }
+        .footer-links a:hover {
+          color: var(--wink-accent);
+        }
 
-          .footer-contact a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-          }
+        .footer-contact {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
 
-          .footer-contact a:hover {
-            color: var(--color-primary);
-          }
+        .footer-contact a {
+          text-decoration: none;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+          transition: 0.2s ease;
+        }
 
-          .footer-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 800;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-          }
-        `}
-      </style>
+        .footer-contact a:hover {
+          color: var(--wink-accent);
+        }
 
-      <div className="container footer-grid">
+        .footer-bottom {
+          margin-top: 3rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid var(--border-color);
+          text-align: center;
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+        }
+      `}</style>
 
-        {/* LEFT - WINK */}
-        <div className="footer-col footer-logo">
-          <img src="/winklogo.png" alt="WINK" />
-        </div>
+      <div className="container">
+        <div className="footer-grid">
 
-        {/* CENTER - GL EVENTS + LINKS */}
-        <div className="footer-col footer-logo">
-          <img src="/GLevents.jpeg" alt="GL Events" />
-
-          <div className="footer-links">
-            <a href="#about">About</a>
-            <a href="#participants">Participants</a>
-            <a href="#process">Process</a>
-            <a href="#past-missions">Past Missions</a>
-            <a href="#contact">Contact</a>
+          {/* WINK */}
+          <div className="footer-col">
+            <div className="footer-logo-box">
+              <img src="/WinkBlue.png" alt="WINK" />
+            </div>
+            <div className="footer-divider" />
+            <span className="footer-label">B2B Matchmaking & Meetings Agency</span>
+            <div className="footer-contact">
+              <a href="mailto:winkevents@wink-consulting.com">winkevents@wink-consulting.com</a>
+              <a href="tel:+212669270075">+212 6 69 27 00 75</a>
+            </div>
           </div>
-        </div>
 
-        {/* RIGHT - EXPO + CONTACT */}
-        <div className="footer-col footer-logo">
-          <img src="/saudievent.png" alt="Natural World Expo Saudi" />
-
-          <div className="footer-contact">
-            <a href="mailto:winkevents@wink-consulting.com">
-              winkevents@wink-consulting.com
-            </a>
-            <a href="tel:+212669270075">
-              +212 6 69 27 00 75
-            </a>
+          {/* GL EVENTS */}
+          <div className="footer-col">
+            <div className="footer-logo-box">
+              <img src="/GLevents.jpeg" alt="GL Events" />
+            </div>
+            <div className="footer-divider" />
+            <span className="footer-label">Event Organiser</span>
+            <div className="footer-links">
+              <a href="#home">Home</a>
+              <a href="#program">Program</a>
+              <a href="#packages">Packages</a>
+              <a href="#apply">Apply</a>
+            </div>
           </div>
+
+          {/* NATURAL WORLD EXPO SAUDI */}
+          <div className="footer-col">
+            <div className="footer-logo-box">
+              <img src="/saudievent.png" alt="Natural World Expo Saudi" />
+            </div>
+            <div className="footer-divider" />
+            <span className="footer-label">Natural World Expo Saudi</span>
+            <div className="footer-contact">
+              <a href="https://www.google.com/maps/search/?api=1&query=Riyadh+Front+Exhibition+%26+Conference+Center" target="_blank" rel="noopener noreferrer">
+                Riyadh Front Exhibition & Conference Center
+              </a>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>14–16 December 2026</span>
+            </div>
+          </div>
+
         </div>
 
+        <div className="footer-bottom">
+          © 2026 WINK — B2B Matchmaking & Meetings Agency. All rights reserved.
+        </div>
       </div>
     </footer>
   );

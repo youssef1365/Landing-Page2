@@ -54,21 +54,17 @@ export default function StepsSection({ steps }) {
             box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
           }
 
-          /* NUMBER (FIXED - NO ABSOLUTE) */
           .step-number {
             width: 38px;
             height: 38px;
             border-radius: 999px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-weight: 800;
             font-size: 0.9rem;
             color: white;
-
-            background: linear-gradient(135deg, #98D76D, #3E9B56);
+            background: var(--wink-accent);
             box-shadow: 0 10px 20px rgba(62, 155, 86, 0.25);
           }
 

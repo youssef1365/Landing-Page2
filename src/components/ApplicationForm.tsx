@@ -74,7 +74,7 @@ export default function ApplicationForm({ packages }) {
           }
 
           .required {
-            color: var(--orange);
+            color: var(--accent);
             margin-left: 4px;
             font-weight: 900;
           }
@@ -82,12 +82,9 @@ export default function ApplicationForm({ packages }) {
           input, select, textarea {
             padding: 0.9rem 1rem;
             border-radius: 0.85rem;
-
             border: 1px solid var(--border-color);
             background: var(--bg-white);
-
             font-size: 0.95rem;
-
             outline: none;
             transition: all 0.2s ease;
           }
@@ -95,8 +92,8 @@ export default function ApplicationForm({ packages }) {
           input:focus,
           select:focus,
           textarea:focus {
-            border-color: var(--green);
-            box-shadow: 0 0 0 3px rgba(62, 155, 86, 0.15);
+            border-color: var(--wink-accent);
+
           }
 
           textarea {
@@ -104,7 +101,6 @@ export default function ApplicationForm({ packages }) {
             resize: vertical;
           }
 
-          /* PACKAGE SELECTION (card style) */
           .package-list {
             display: grid;
             gap: 0.8rem;
@@ -114,14 +110,10 @@ export default function ApplicationForm({ packages }) {
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 1rem 1.2rem;
-
             border: 1px solid var(--border-color);
             border-radius: 1rem;
-
             background: var(--bg-white);
-
             cursor: pointer;
             transition: all 0.2s ease;
 
@@ -130,23 +122,24 @@ export default function ApplicationForm({ packages }) {
           }
 
           .package-option:hover {
-            border-color: var(--green);
-            background: var(--bg-soft);
+            border-color: var(--wink-accent);
+            background: rgba(74, 143, 168, 0.08);
             transform: translateY(-2px);
           }
 
-          .package-option input {
-            accent-color: var(--green);
-            transform: scale(1.1);
-          }
-
-          /* CONTACT SECTION BLOCK */
           .contact-block {
             padding: 1.5rem;
             border-radius: 1.25rem;
-            border: 1px solid var(--border-color);
-            background: var(--bg-soft);
+            border: 1px solid var(--wink-accent);
+            background: rgba(74, 143, 168, 0.06);
           }
+
+          .package-option input {
+            accent-color: var(--wink-accent);
+            transform: scale(1.1);
+          }
+
+
 
           .contact-title {
             font-weight: 800;
@@ -165,15 +158,11 @@ export default function ApplicationForm({ packages }) {
             padding: 1rem;
             border: none;
             border-radius: 1rem;
-
             font-weight: 900;
             font-size: 1rem;
-
             color: white;
-            background: linear-gradient(135deg, var(--green), var(--green-dark));
-
+            background: linear-gradient(135deg, var(--wink-accent), var(--green-dark));
             cursor: pointer;
-
             transition: all 0.25s ease;
             box-shadow: var(--shadow-sm);
           }

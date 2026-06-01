@@ -3,11 +3,12 @@ export const expoData = {
         name: "Natural World Expo Saudi",
         year: "2026",
         date: "14–16 December 2026",
+        dateStart: "20261214",
+        dateEnd: "20261217",
         location: "Riyadh Front Exhibition & Conference Center",
         description: "A fast-growing exhibition connecting international natural and organic brands with Saudi Arabia’s expanding retail, wellness, and distribution ecosystem.",
         subDescription: "The exhibition gathers importers, distributors, retailers, hospitality groups, and decision-makers actively seeking innovative products for the Saudi market.",
         organizers: [
-           { name: "WINK", logo: "/winklogo.png" },
            { name: "GL Events", logo: "/GLevents.jpeg" },
         ]
     },

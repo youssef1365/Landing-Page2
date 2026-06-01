@@ -4,7 +4,8 @@ export default function BrandLogos() {
   return (
     <div style={styles.navbar}>
       <div style={styles.left}>
-        <img src="/winklogo.png" alt="WINK" style={styles.logoImg} />
+        <img src="/WinkBlue.png" alt="WINK" style={styles.logoImg} />
+        <img src="/GLevents.jpeg" alt="GL Events" style={styles.logoImgSmall} />
       </div>
 
       <div style={styles.center}>
@@ -15,7 +16,6 @@ export default function BrandLogos() {
       </div>
 
       <div style={styles.right}>
-        <img src="/GLevents.jpeg" alt="GL Events" style={styles.logoImgSmall} />
         <a href="#apply" style={styles.cta}>Get Access</a>
       </div>
     </div>
@@ -42,9 +42,12 @@ const styles = {
     borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
   },
 
-  left: {
-    flex: 1,
-  },
+ left: {
+   flex: 1,
+   display: 'flex',      // add this
+   alignItems: 'center', // add this
+   gap: '1rem',          // add this
+ },
 
   center: {
     flex: 2,
@@ -62,7 +65,7 @@ const styles = {
   },
 
   logoImg: {
-    height: '82px',
+    height: '62px',
     width: 'auto',
   },
 

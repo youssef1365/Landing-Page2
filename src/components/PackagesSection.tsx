@@ -1,61 +1,143 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PackageCard from './PackageCard.jsx';
 
 export default function PackagesSection({ packages }) {
+  const [active, setActive] = useState(0);
+
+  const VISIBLE = 3;
+  const maxIndex = packages.length - VISIBLE;
+
+  const prev = () => setActive((i) => Math.max(i - 1, 0));
+  const next = () => setActive((i) => Math.min(i + 1, maxIndex));
+
   return (
     <section className="packages-section">
-      <style>
-        {`
-          .packages-section {
-            padding: 6rem 0;
-            background: var(--bg-main);
-          }
+      <style>{`
+        .packages-section {
+          padding: 6rem 0;
+          background: var(--bg-main);
+          overflow: hidden;
+        }
 
-          .packages-header {
-            text-align: center;
-            margin-bottom: 3rem;
-          }
+        .packages-header {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
 
-          .packages-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.75rem;
-          }
+        .packages-header h2 {
+          font-size: 2.2rem;
+          font-weight: 800;
+          color: var(--text-main);
+          margin-bottom: 0.75rem;
+        }
 
-          .packages-header p {
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto;
-          }
+        .packages-header p {
+          color: var(--text-secondary);
+          max-width: 650px;
+          margin: 0 auto;
+        }
 
-          .packages-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
+        .slider-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
 
-          @media (min-width: 768px) {
-            .packages-grid {
-              grid-template-columns: repeat(3, 1fr);
-            }
-          }
-        `}
-      </style>
+        .slider-track {
+          display: flex;
+          gap: 2rem;
+          transition: transform 0.4s ease;
+          width: 100%;
+        }
+
+        .slider-arrow {
+          flex-shrink: 0;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 999px;
+          border: 1px solid var(--border-color);
+          background: var(--bg-white);
+          cursor: pointer;
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.2s ease, transform 0.2s ease;
+          z-index: 2;
+        }
+
+        .slider-arrow:hover {
+          background: var(--wink-accent);
+          color: white;
+          transform: scale(1.08);
+        }
+
+        .slider-dots {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 2rem;
+        }
+
+        .slider-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 999px;
+          background: var(--border-color);
+          border: none;
+          cursor: pointer;
+          transition: background 0.2s ease, width 0.2s ease;
+          padding: 0;
+        }
+
+        .slider-dot.active {
+          background: var(--wink-accent);
+          width: 24px;
+        }
+
+        @media (max-width: 767px) {
+          .slider-arrow { display: none; }
+        }
+      `}</style>
 
       <div className="container">
-
         <div className="packages-header">
           <h2>Choose Your Participation Package</h2>
           <p>Select the package that best fits your market entry strategy and business goals.</p>
         </div>
 
-        <div className="packages-grid">
-          {packages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} />
-          ))}
+        <div className="slider-wrapper">
+          <button className="slider-arrow" onClick={prev}>&#8592;</button>
+
+          <div style={{ overflow: 'hidden', width: '100%' }}>
+            <div
+              className="slider-track"
+              style={{ transform: `translateX(calc(-${active} * (100% / ${Math.min(packages.length, 3)} + 2rem / ${Math.min(packages.length, 3)})))` }}
+            >
+              {packages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  style={{ minWidth: 'calc(33.333% - 1.4rem)', flexShrink: 0 }}
+                >
+                  <PackageCard pkg={pkg} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button className="slider-arrow" onClick={next}>&#8594;</button>
         </div>
 
+        <div className="slider-dots">
+          {packages.slice(0, maxIndex + 1).map((_, i) => (
+            <button
+              key={i}
+              className={`slider-dot ${i === active ? 'active' : ''}`}
+              onClick={() => setActive(i)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
