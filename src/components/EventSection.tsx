@@ -17,16 +17,14 @@ export default function EventSection({ event }) {
           }
 
           .event-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 1fr auto;
             gap: 2rem;
-            flex-wrap: wrap;
+            align-items: start;
           }
 
+          /* LEFT: text only */
           .event-header {
-            flex: 1;
-            min-width: 260px;
             display: flex;
             flex-direction: column;
             gap: 0.9rem;
@@ -60,24 +58,24 @@ export default function EventSection({ event }) {
             max-width: 780px;
           }
 
-          /* LOGO BLOCK (RESPONSIVE SAFE) */
-          .event-logo {
-            flex: 0 0 auto;
+          /* RIGHT: logo + organizers stacked */
+          .event-right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 220px;
+            flex-shrink: 0;
+          }
 
+          .event-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-
             padding: 1.2rem 1.5rem;
-
             border-radius: 1.25rem;
             border: 1px solid var(--border-color);
             background: linear-gradient(to bottom, var(--bg-main), #ffffff);
-
             box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-
-            max-width: 220px;
-            width: 100%;
           }
 
           .event-logo img {
@@ -87,25 +85,46 @@ export default function EventSection({ event }) {
             object-fit: contain;
           }
 
-          /* remove hover dependency for mobile safety */
-          @media (hover: hover) {
-            .event-logo:hover {
-              transform: translateY(-4px);
-              transition: transform 0.2s ease;
-            }
+          /* Organizer cards in right col */
+          .organizer-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(to bottom, var(--bg-main), #ffffff);
           }
 
-          /* META GRID */
+          .organizer-logo {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            flex-shrink: 0;
+          }
+
+          .organizer-name {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.82rem;
+            line-height: 1.3;
+          }
+
+          /* ORGANIZED BY label above organizer cards */
+          .organized-by-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: -0.25rem;
+          }
+
+          /* BOTTOM META: date + location full width */
           .event-meta {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
-          }
-
-          @media (min-width: 768px) {
-            .event-meta {
-              grid-template-columns: repeat(2, 1fr);
-            }
           }
 
           .meta-box {
@@ -130,15 +149,18 @@ export default function EventSection({ event }) {
             font-size: clamp(0.95rem, 1.2vw, 1.05rem);
           }
 
-          /* MOBILE FIX */
+          /* MOBILE */
           @media (max-width: 640px) {
             .event-top {
-              flex-direction: column;
+              grid-template-columns: 1fr;
             }
 
-            .event-logo {
-              max-width: 100%;
-              justify-content: flex-start;
+            .event-right-col {
+              width: 100%;
+            }
+
+            .event-meta {
+              grid-template-columns: 1fr;
             }
           }
         `}
@@ -146,48 +168,46 @@ export default function EventSection({ event }) {
 
       <div className="event-card">
 
+        {/* TOP: left text | right logo + organizers */}
         <div className="event-top">
 
+          {/* LEFT */}
           <div className="event-header">
-
-            <span className="event-badge">
-              Event Overview
-            </span>
-
-            <h2 className="event-title">
-              {event.name}
-            </h2>
-
-            <p className="event-text">
-              {event.description}
-            </p>
-
-            <p className="event-text">
-              {event.subDescription}
-            </p>
-
+            <span className="event-badge">Event Overview</span>
+            <h2 className="event-title">{event.name}</h2>
+            <p className="event-text">{event.description}</p>
+            <p className="event-text">{event.subDescription}</p>
           </div>
 
-          <div className="event-logo">
-            <img src="/saudievent.png" alt="Event Logo" />
-          </div>
+          {/* RIGHT */}
+          <div className="event-right-col">
 
+            <div className="event-logo">
+              <img src="/saudievent.png" alt="Event Logo" />
+            </div>
+
+            <div className="organized-by-label">Organized By</div>
+
+            {event.organizers.map((org) => (
+              <div className="organizer-card" key={org.name}>
+                <img className="organizer-logo" src={org.logo} alt={org.name} />
+                <span className="organizer-name">{org.name}</span>
+              </div>
+            ))}
+
+          </div>
         </div>
 
+        {/* BOTTOM: date + location */}
         <div className="event-meta">
-
           <div className="meta-box">
             <div className="meta-label">Date</div>
-            <div className="meta-value">14–16 December 2026</div>
+            <div className="meta-value">{event.date}</div>
           </div>
-
           <div className="meta-box">
             <div className="meta-label">Location</div>
-            <div className="meta-value">
-              Riyadh Front Exhibition & Conference Center
-            </div>
+            <div className="meta-value">{event.location}</div>
           </div>
-
         </div>
 
       </div>

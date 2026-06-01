@@ -72,7 +72,6 @@ export default function MarketsAndSectors({ buyerProfiles, sectors }) {
             background: #f8fafc;
           }
 
-          /* Optional subtle differentiation */
           .tag.buyer {
             background: linear-gradient(to right, #f0fdf4, #ffffff);
           }
@@ -87,7 +86,6 @@ export default function MarketsAndSectors({ buyerProfiles, sectors }) {
 
         <div className="markets-grid">
 
-          {/* BUYERS */}
           <div className="section-block">
             <h2>Qualified Buyers</h2>
             <p className="section-subtitle">
@@ -103,7 +101,6 @@ export default function MarketsAndSectors({ buyerProfiles, sectors }) {
             </div>
           </div>
 
-          {/* SECTORS */}
           <div className="section-block">
             <h2>Sectors Covered</h2>
             <p className="section-subtitle">

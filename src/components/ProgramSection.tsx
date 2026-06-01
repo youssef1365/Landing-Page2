@@ -8,10 +8,9 @@ export default function ProgramSection({ program }) {
         {`
           .program-section {
             padding: 6rem 0;
-            background: linear-gradient(to bottom, var(--bg-white), var(--bg-main));
+            background: linear-gradient(to bottom, var(bg-main), #ffffff);
           }
 
-          /* HEADER */
           .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -46,7 +45,6 @@ export default function ProgramSection({ program }) {
             }
           }
 
-          /* CARD (more minimal, less heavy) */
           .program-card {
             padding: 2.5rem;
             border-radius: 1.5rem;
@@ -115,13 +113,11 @@ export default function ProgramSection({ program }) {
 
       <div className="container">
 
-        {/* HEADER */}
         <div className="section-header">
           <h2>{program.title}</h2>
           <p>{program.subtitle}</p>
         </div>
 
-        {/* CONTENT */}
         <div className="program-grid">
 
           <div className="program-card">

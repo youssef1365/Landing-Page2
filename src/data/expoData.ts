@@ -5,7 +5,11 @@ export const expoData = {
         date: "14–16 December 2026",
         location: "Riyadh Front Exhibition & Conference Center",
         description: "A fast-growing exhibition connecting international natural and organic brands with Saudi Arabia’s expanding retail, wellness, and distribution ecosystem.",
-        subDescription: "The exhibition gathers importers, distributors, retailers, hospitality groups, and decision-makers actively seeking innovative products for the Saudi market."
+        subDescription: "The exhibition gathers importers, distributors, retailers, hospitality groups, and decision-makers actively seeking innovative products for the Saudi market.",
+        organizers: [
+           { name: "WINK", logo: "/winklogo.png" },
+           { name: "GL Events", logo: "/GLevents.jpeg" },
+        ]
     },
     program: {
         title: "Structured meetings. Real market access.",

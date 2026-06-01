@@ -95,7 +95,7 @@ const styles = {
   },
 
   cta: {
-    background: '#6366f1',
+    background: 'var(--accent)',
     color: 'white',
     padding: '0.6rem 1rem',
     borderRadius: '999px',
