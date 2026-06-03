@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PackageCard from './PackageCard.jsx';
 
 export default function PackagesSection({ packages }) {
   const [active, setActive] = useState(0);
+  const trackRef = useRef(null);
+  const touchStartX = useRef(null);
 
   const VISIBLE = 3;
   const maxIndex = packages.length - VISIBLE;
 
   const prev = () => setActive((i) => Math.max(i - 1, 0));
   const next = () => setActive((i) => Math.min(i + 1, maxIndex));
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) {
+      delta > 0 ? next() : prev();
+    }
+    touchStartX.current = null;
+  };
 
   return (
     <section className="packages-section">
@@ -96,8 +111,32 @@ export default function PackagesSection({ packages }) {
           width: 24px;
         }
 
+        /* ── Mobile: native scroll snap ── */
         @media (max-width: 767px) {
           .slider-arrow { display: none; }
+
+          .slider-overflow {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+
+          .slider-overflow::-webkit-scrollbar {
+            display: none;
+          }
+
+          .slider-track {
+            gap: 1rem;
+            transform: none !important;
+            transition: none;
+            width: max-content;
+          }
+
+          .slider-card-wrap {
+            scroll-snap-align: start;
+            min-width: 80vw !important;
+          }
         }
       `}</style>
 
@@ -110,14 +149,23 @@ export default function PackagesSection({ packages }) {
         <div className="slider-wrapper">
           <button className="slider-arrow" onClick={prev}>&#8592;</button>
 
-          <div style={{ overflow: 'hidden', width: '100%' }}>
+          <div
+            className="slider-overflow"
+            style={{ overflow: 'hidden', width: '100%' }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
+              ref={trackRef}
               className="slider-track"
-              style={{ transform: `translateX(calc(-${active} * (100% / ${Math.min(packages.length, 3)} + 2rem / ${Math.min(packages.length, 3)})))` }}
+              style={{
+                transform: `translateX(calc(-${active} * (100% / ${Math.min(packages.length, 3)} + 2rem / ${Math.min(packages.length, 3)})))`,
+              }}
             >
               {packages.map((pkg) => (
                 <div
                   key={pkg.id}
+                  className="slider-card-wrap"
                   style={{ minWidth: 'calc(33.333% - 1.4rem)', flexShrink: 0 }}
                 >
                   <PackageCard pkg={pkg} />
