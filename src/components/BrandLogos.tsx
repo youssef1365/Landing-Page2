@@ -214,12 +214,12 @@ export default function BrandLogos() {
           { href: '#packages', label: 'Packages' },
           { href: '#apply',    label: 'Apply' },
         ].map(({ href, label }) => (
-
-            key={href}
-            href={href}
-            className="mobile-link"
-            onClick={() => setMenuOpen(false)}
-          >
+            <a
+                key={href}
+                href={href}
+                className="mobile-link"
+                onClick={() => setMenuOpen(false)}
+              >
             {label}
           </a>
         ))}
