@@ -53,6 +53,27 @@ const styles = `
     color: var(--text-main);
   }
 
+  .pkg-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      border-radius: 999px;
+      background: var(--wink-accent);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .pkg-cta:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
   .package-tagline {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -120,6 +141,8 @@ export default function PackageCard({ pkg }) {
       </ul>
 
       {pkg.note && <p className="note">{pkg.note}</p>}
+
+      <a href="#apply" className="pkg-cta">Request Pricing</a>
     </div>
   );
 }

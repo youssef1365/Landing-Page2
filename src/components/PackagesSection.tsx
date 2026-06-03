@@ -5,6 +5,7 @@ export default function PackagesSection({ packages }) {
   const [active, setActive] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const trackRef = useRef(null);
+  const overflowRef = useRef(null);
   const touchStartX = useRef(null);
 
   const VISIBLE = 3;
@@ -17,8 +18,21 @@ export default function PackagesSection({ packages }) {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  const prev = () => setActive((i) => Math.max(i - 1, 0));
-  const next = () => setActive((i) => Math.min(i + 1, maxIndex));
+  const prev = () => {
+    if (isMobile) {
+      overflowRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    } else {
+      setActive((i) => Math.max(i - 1, 0));
+    }
+  };
+
+  const next = () => {
+    if (isMobile) {
+      overflowRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    } else {
+      setActive((i) => Math.min(i + 1, maxIndex));
+    }
+  };
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -127,9 +141,12 @@ export default function PackagesSection({ packages }) {
           width: 24px;
         }
 
+        .scroll-hint {
+          display: none;
+        }
+
         @media (max-width: 767px) {
-          .slider-arrow { display: none; }
-          .slider-dots  { display: none; }
+          .slider-dots { display: none; }
 
           .slider-overflow {
             overflow-x: auto;
@@ -154,6 +171,15 @@ export default function PackagesSection({ packages }) {
             min-width: 80vw !important;
             scroll-snap-align: start;
           }
+
+          .scroll-hint {
+            display: block;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            opacity: 0.7;
+          }
         }
       `}</style>
 
@@ -167,6 +193,7 @@ export default function PackagesSection({ packages }) {
           <button className="slider-arrow" onClick={prev}>&#8592;</button>
 
           <div
+            ref={overflowRef}
             className="slider-overflow"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
@@ -190,6 +217,8 @@ export default function PackagesSection({ packages }) {
 
           <button className="slider-arrow" onClick={next}>&#8594;</button>
         </div>
+
+        <div className="scroll-hint">Scroll to explore packages →</div>
 
         <div className="slider-dots">
           {packages.slice(0, maxIndex + 1).map((_, i) => (
