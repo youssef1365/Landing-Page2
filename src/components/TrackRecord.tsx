@@ -56,11 +56,9 @@ export default function TrackRecord({ trackRecord }) {
           margin: 0;
         }
 
-        /* STATS ROW */
         .stats-row {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 0;
           background: var(--bg-white);
           border: 1px solid var(--border-color);
           border-radius: 1.5rem;
@@ -70,35 +68,52 @@ export default function TrackRecord({ trackRecord }) {
 
         @media (min-width: 768px) {
           .stats-row {
-            grid-template-columns: repeat(${/* will be set inline */ 4}, 1fr);
+            grid-template-columns: repeat(4, 1fr);
           }
         }
 
         .stat-item {
-          padding: 1.75rem 2rem;
+          padding: 1.5rem 1.25rem;
           border-right: 1px solid var(--border-color);
           border-bottom: 1px solid var(--border-color);
+          text-align: center;
+        }
+
+        .stat-item:nth-child(2n) {
+          border-right: none;
         }
 
         @media (min-width: 768px) {
           .stat-item {
+            padding: 1.75rem 2rem;
             border-bottom: none;
+            text-align: left;
+          }
+
+          .stat-item:nth-child(2n) {
+            border-right: 1px solid var(--border-color);
+          }
+
+          .stat-item:last-child {
+            border-right: none;
           }
         }
 
-        .stat-item:last-child {
-          border-right: none;
-        }
-
         .stat-metric {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
           font-weight: 900;
           color: var(--wink-accent);
           line-height: 1.2;
         }
 
+        @media (min-width: 768px) {
+          .stat-metric {
+            font-size: 1.8rem;
+          }
+        }
+
         .stat-label {
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           color: var(--text-secondary);
           margin-top: 0.25rem;
         }
@@ -119,10 +134,7 @@ export default function TrackRecord({ trackRecord }) {
           </div>
         </div>
 
-        <div
-          className="stats-row"
-          style={{ gridTemplateColumns: `repeat(${trackRecord.length}, 1fr)` }}
-        >
+        <div className="stats-row">
           {trackRecord.map((stat, index) => (
             <div key={index} className="stat-item">
               <div className="stat-metric">{stat.metric}</div>
