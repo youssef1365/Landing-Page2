@@ -168,8 +168,8 @@ export default function PackagesSection({ packages }) {
           }
 
           .slider-card-wrap {
-            min-width: 80vw !important;
-            scroll-snap-align: start;
+            min-width: 100%;
+            flex-shrink: 0;
           }
 
           .scroll-hint {
