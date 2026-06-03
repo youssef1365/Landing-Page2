@@ -66,12 +66,6 @@ export default function TrackRecord({ trackRecord }) {
           overflow: hidden;
         }
 
-        @media (min-width: 768px) {
-          .stats-row {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-
         .stat-item {
           padding: 1.5rem 1.25rem;
           border-right: 1px solid var(--border-color);
@@ -83,10 +77,22 @@ export default function TrackRecord({ trackRecord }) {
           border-right: none;
         }
 
+        .stat-item:last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+          text-align: center;
+          border-right: none;
+          border-bottom: none;
+        }
+
         @media (min-width: 768px) {
+          .stats-row {
+            grid-template-columns: repeat(3, 1fr);
+          }
+
           .stat-item {
             padding: 1.75rem 2rem;
             border-bottom: none;
+            border-right: 1px solid var(--border-color);
             text-align: left;
           }
 
@@ -97,23 +103,23 @@ export default function TrackRecord({ trackRecord }) {
           .stat-item:last-child {
             border-right: none;
           }
+
+          .stat-item:last-child:nth-child(odd) {
+            grid-column: auto;
+            text-align: left;
+            border-right: none;
+          }
         }
 
         .stat-metric {
-          font-size: 1.6rem;
+          font-size: 1.8rem;
           font-weight: 900;
           color: var(--wink-accent);
           line-height: 1.2;
         }
 
-        @media (min-width: 768px) {
-          .stat-metric {
-            font-size: 1.8rem;
-          }
-        }
-
         .stat-label {
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           color: var(--text-secondary);
           margin-top: 0.25rem;
         }
