@@ -96,6 +96,13 @@ const styles = `
     gap: 0.8rem;
     flex: 1;
   }
+   @media (max-width: 430px) {
+      .package-card {
+        width: 100%;
+        min-width: unset;
+        flex: unset;
+      }
+   }
 
   .features li {
     font-size: 0.95rem;
