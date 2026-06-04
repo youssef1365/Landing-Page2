@@ -12,7 +12,9 @@ const styles = `
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
     height: 100%;
     box-sizing: border-box;
-    width: 100%;
+    flex: 0 0 320px;
+    width: 320px;
+      min-width: 320px
   }
 
   .package-card:hover {
@@ -116,13 +118,6 @@ const styles = `
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
   }
-  @media (max-width: 767px) {
-      .packages-list > * {
-        width: 100%;
-        max-width: 480px;
-        margin: 0 auto;
-      }
-    }
 `;
 
 export default function PackageCard({ pkg }) {
