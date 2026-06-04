@@ -102,7 +102,7 @@ export default function PackagesSection({ packages }) {
           }
 
           .slider-arrow:hover {
-            background: var(--accent);
+            background: var(--wink-accent);
             color: white;
             transform: scale(1.08);
           }
