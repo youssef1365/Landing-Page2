@@ -13,13 +13,32 @@ const heroStyles = `
     background-size: cover;
   }
 
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    pointer-events: none;
-  }
+  .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(10, 40, 20, 0.82) 0%,
+        rgba(10, 40, 20, 0.55) 50%,
+        rgba(10, 40, 20, 0.2) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.5) 0%,
+        transparent 45%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
 
   .hero-content {
     position: relative;

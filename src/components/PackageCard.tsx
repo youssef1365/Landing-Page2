@@ -14,7 +14,7 @@ const styles = `
     box-sizing: border-box;
     flex: 0 0 320px;
     width: 320px;
-      min-width: 320px
+      min-width: 341px
   }
 
   .package-card:hover {
