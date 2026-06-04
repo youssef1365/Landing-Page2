@@ -199,21 +199,21 @@ export default function ApplicationForm({ packages }) {
           fastest-growing natural products market.
         </p>
 
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form action="app-form.php" method="POST">
           <div className="grid-2">
             <div className="form-group">
               <label>Company Name <span className="required">*</span></label>
-              <input type="text" required />
+              <input type="text" name="company_name" required />
             </div>
             <div className="form-group">
               <label>Website</label>
-              <input type="url" />
+              <input type="url" name="website" />
             </div>
           </div>
 
           <div className="form-group">
             <label>Industry <span className="required">*</span></label>
-            <select required>
+            <select name="industry" required>
               <option value="">Select Industry...</option>
               <option>Food & Beverage</option>
               <option>Cosmetics & Clean Beauty</option>
@@ -224,17 +224,17 @@ export default function ApplicationForm({ packages }) {
 
           <div className="form-group">
             <label>Products / Services <span className="required">*</span></label>
-            <textarea required />
+            <textarea name="products_services" required />
           </div>
 
           <div className="grid-2">
             <div className="form-group">
               <label>Target Markets</label>
-              <input type="text" />
+              <input type="text" name="target_markets" />
             </div>
             <div className="form-group">
               <label>Ideal Buyers Wishlist</label>
-              <input type="text" />
+              <input type="text" name="ideal_buyers" />
             </div>
           </div>
 
@@ -257,15 +257,15 @@ export default function ApplicationForm({ packages }) {
             <div className="grid-3">
               <div className="form-group">
                 <label>Full Name <span className="required">*</span></label>
-                <input type="text" required />
+                <input type="text" name="contact_name" required />
               </div>
               <div className="form-group">
                 <label>Email <span className="required">*</span></label>
-                <input type="email" required />
+                <input type="email" name="contact_email" required />
               </div>
               <div className="form-group">
                 <label>Phone <span className="required">*</span></label>
-                <input type="tel" required />
+                <input type="tel" name="contact_phone" required />
               </div>
             </div>
           </div>
